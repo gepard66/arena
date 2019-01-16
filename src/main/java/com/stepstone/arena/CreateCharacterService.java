@@ -1,52 +1,47 @@
 package com.stepstone.arena;
 
-import org.springframework.util.Assert;
+import static com.stepstone.arena.Creature.drawRandomNumber;
+
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
+@Service
 public class CreateCharacterService {
 
-  CharacterType characterType;
-  List<Creature> creatureList;
+  private CharacterType characterType;
+  private List<Creature> creatureList;
 
   public List<Creature> createCreature(int numberOfCreatures) {
-    switch (characterType) {
-      case HUMAN:
-        addCreaturesToList(numberOfCreatures, new Human());
-        break;
-      case HALFING:
-        addCreaturesToList(numberOfCreatures, new Halfing());
-        break;
-      case TROLL:
-        addCreaturesToList(numberOfCreatures, new Troll());
-        break;
-      case ORC:
-        addCreaturesToList(numberOfCreatures, new Orc());
-        break;
-      case DWARF:
-        addCreaturesToList(numberOfCreatures, new Dwarf());
-        break;
-      case ELF:
-        addCreaturesToList(numberOfCreatures, new Elf());
-        break;
-      default:
-        creatureList.add(null);
+    for (int i = 0; i < numberOfCreatures; i++) {
+      switch (getRandomCharacter()) {
+        case HUMAN:
+          creatureList.add(new Human());
+          break;
+        case HALFING:
+          creatureList.add(new Halfing());
+          break;
+        case TROLL:
+          creatureList.add(new Troll());
+          break;
+        case ORC:
+          creatureList.add(new Orc());
+          break;
+        case DWARF:
+          creatureList.add(new Dwarf());
+          break;
+        case ELF:
+          creatureList.add(new Elf());
+          break;
+        default:
+          System.out.println("Wrong type of creature");
+      }
     }
     return creatureList;
-
   }
 
-  private void addCreaturesToList(int numberOfCreatures, Creature creature) {
-    for (int i = 0; i < numberOfCreatures; i++) {
-      creatureList.add(creature);
-    }
+  private CharacterType getRandomCharacter() {
+    return CharacterType.values()[drawRandomNumber(0, CharacterType.values().length - 1)];
   }
-
-
-//  public static int drawRandomNumber(int minimum, int maximum) {
-//    Random rn = new Random();
-//    return rn.nextInt(maximum - minimum + 1) + minimum;
-//  }
 
 }

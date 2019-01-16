@@ -34,7 +34,7 @@ public enum CharacterType {
 
   ELF("ELF"),
   HUMAN("HUMAN"),
-  HALFING("HUMAN"),
+  HALFING("HALFING"),
   TROLL("TROLL"),
   ORC("ORC"),
   DWARF("DWARF");

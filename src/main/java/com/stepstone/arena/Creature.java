@@ -1,10 +1,12 @@
 package com.stepstone.arena;
 
+import com.stepstone.arena.interfaces.CreatureFunctions;
+
 import lombok.Getter;
 
 import java.util.Random;
 
-public abstract class Creature {
+public abstract class Creature implements CreatureFunctions {
 
   @Getter
   private Integer strength;
@@ -56,5 +58,32 @@ public abstract class Creature {
   public static int drawRandomNumber(int minimum, int maximum) {
     Random rn = new Random();
     return rn.nextInt(maximum - minimum + 1) + minimum;
+  }
+
+//  int potentialDamage = getStrength() + drawRandomNumber(0,3);
+
+  @Override
+  public int attack(Creature creature) {
+    int potentialDamage = getStrength() + drawRandomNumber(0,3);
+
+    if (getDexterity() > drawRandomNumber(1,10)) {
+      System.out.println("Successfully attacked!");
+      return potentialDamage;
+    } else {
+      System.out.println("You missed!");
+      return 0;
+    }
+  }
+
+  @Override
+  public void dodge(int potentialDamage, Creature attacker) {
+    if (attack(attacker)>0) {
+      if(getInitiative()>drawRandomNumber(1,10)) {
+//        potentialDamage - get
+
+      }
+
+    }
+
   }
 }
