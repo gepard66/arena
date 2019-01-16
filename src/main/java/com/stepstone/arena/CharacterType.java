@@ -1,6 +1,6 @@
 package com.stepstone.arena;
 
-public enum CharacteresTypes {
+public enum CharacterType {
 
 
 //  private final static String ELF = "ELF";
@@ -19,7 +19,7 @@ public enum CharacteresTypes {
 //  private Integer numberOfDodges;
 //  private Integer lifePoints;
 //
-//  CharacteresTypes(Integer strength, Integer dexterity, Integer initiative, Integer velocity,
+//  CharacterType(Integer strength, Integer dexterity, Integer initiative, Integer velocity,
 //                   Integer endurance, Integer numberOfAttacks, Integer numberOfDodges,
 //                   Integer lifePoints) {
 //    this.strength = strength;
@@ -34,14 +34,14 @@ public enum CharacteresTypes {
 
   ELF("ELF"),
   HUMAN("HUMAN"),
-  HALFING("HUMAN"),
+  HALFING("HALFING"),
   TROLL("TROLL"),
   ORC("ORC"),
   DWARF("DWARF");
 
   private String characterType;
 
-  CharacteresTypes(String characterType) {
+  CharacterType(String characterType) {
     this.characterType = characterType;
   }
 
